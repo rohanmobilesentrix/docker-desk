@@ -3,19 +3,45 @@
   "version": "1.0.0",
   "description": "Desktop app to view and remove Docker containers",
   "main": "main.js",
-  "author": "Rohan Patel",
+  "author": {
+    "name": "Rohan Patel",
+    "email": "rohan.patel@mobilesentrix.com"
+  },
   "license": "MIT",
   "scripts": {
     "start": "electron .",
-    "dist": "electron-builder --linux deb AppImage"
+    "dist": "electron-builder --linux deb"
   },
   "build": {
     "appId": "com.mobilesentrix.dockerdesk",
     "productName": "Docker Desk",
-    "linux": { "category": "Development", "icon": "icon.png", "target": ["deb", "AppImage"] }
+    "linux": {
+      "category": "Development",
+      "icon": "icon.png",
+      "target": [
+        "deb"
+      ],
+      "maintainer": "Rohan Patel <rohan.patel@mobilesentrix.com>",
+      "synopsis": "View, stop and remove Docker containers with live RAM/CPU"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "docker.js",
+      "index.html",
+      "renderer.js",
+      "styles.css",
+      "icon.png",
+      "icon.svg"
+    ],
+    "deb": {
+      "afterInstall": "build/after-install.sh",
+      "afterRemove": "build/after-remove.sh"
+    }
   },
   "devDependencies": {
     "electron": "33.2.1",
     "electron-builder": "25.1.8"
-  }
+  },
+  "homepage": "https://github.com/rohanmobilesentrix/docker-desk"
 }
