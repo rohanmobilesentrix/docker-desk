@@ -1,0 +1,21 @@
+{
+  "name": "docker-desk",
+  "version": "1.0.0",
+  "description": "Desktop app to view and remove Docker containers",
+  "main": "main.js",
+  "author": "Rohan Patel",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --linux deb AppImage"
+  },
+  "build": {
+    "appId": "com.mobilesentrix.dockerdesk",
+    "productName": "Docker Desk",
+    "linux": { "category": "Development", "icon": "icon.png", "target": ["deb", "AppImage"] }
+  },
+  "devDependencies": {
+    "electron": "33.2.1",
+    "electron-builder": "25.1.8"
+  }
+}

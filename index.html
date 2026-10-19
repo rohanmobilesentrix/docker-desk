@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'">
+  <title>Docker Desk</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <img class="logo" src="icon.svg" alt="">
+      <div>
+        <h1>Docker Desk</h1>
+        <div class="sub"><span class="live"></span>Live · updates every few seconds</div>
+      </div>
+    </div>
+  </header>
+
+  <section class="cards">
+    <div class="card">
+      <div class="card-label">System memory</div>
+      <div class="card-value" id="sys-mem">–</div>
+      <div class="meter"><div id="sys-mem-bar"></div></div>
+      <div class="card-foot" id="sys-swap">–</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Used by containers</div>
+      <div class="card-value" id="ctr-mem">–</div>
+      <div class="meter"><div id="ctr-mem-bar" class="accent"></div></div>
+      <div class="card-foot" id="ctr-mem-foot">–</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Container CPU</div>
+      <div class="card-value" id="ctr-cpu">–</div>
+      <div class="meter"><div id="ctr-cpu-bar" class="accent"></div></div>
+      <div class="card-foot" id="ctr-cpu-foot">–</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Containers</div>
+      <div class="card-value" id="ctr-count">–</div>
+      <div class="card-foot" id="ctr-count-foot">–</div>
+    </div>
+  </section>
+
+  <div class="toolbar">
+    <div class="tabs" id="tabs">
+      <button data-filter="all" class="active">All</button>
+      <button data-filter="running">Running</button>
+      <button data-filter="stopped">Stopped</button>
+    </div>
+    <input id="search" type="search" placeholder="Search name, image, project…">
+    <select id="sort" title="Sort containers">
+      <option value="memory">Sort: Memory</option>
+      <option value="cpu">Sort: CPU</option>
+      <option value="name">Sort: Name</option>
+    </select>
+    <button id="refresh" class="ghost">Refresh</button>
+    <button id="prune" class="danger">Remove all stopped</button>
+  </div>
+
+  <div class="columns">
+    <span>Container</span><span>Memory</span><span>CPU</span><span>Status</span><span>Ports</span><span></span>
+  </div>
+
+  <main id="list"></main>
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
